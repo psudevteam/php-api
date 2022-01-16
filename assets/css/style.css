@@ -1,0 +1,7 @@
+@import '../fonts/Roboto-Bold.ttf';
+@import '../fonts/Roboto-Medium.ttf';
+@import '../fonts/Roboto-Regular.ttf';
+
+* {
+  font-family: 'Roboto', sans-serif;
+ }
