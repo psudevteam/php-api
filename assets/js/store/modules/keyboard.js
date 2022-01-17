@@ -65,7 +65,7 @@ export const keyboard = {
     },
 
     async storeKeyboard(_, payload) {
-      const url = "http://localhost/php-api/api/keyboard/post.php";
+      const url = "http://localhost:4000/api/keyboard/post.php";
       try {
         const {
           keebName,
@@ -89,16 +89,35 @@ export const keyboard = {
       }
     },
 
-    async deleteKeyboard(_, keebId) {
-      const url = "http://localhost/php-api/api/delete.php";
+    async deleteKeyboard(_, id) {
+      const url = "http://localhost/php-api/api/keyboard/delete.php";
       try {
-        await axios.delete(url, {
-          id: 3,
+        const res = await axios.delete(url, {
+          data: {
+            id
+          }
         });
+        return res
       } catch (err) {
         console.log(err);
       }
     },
+
+    async euy(_, id){
+      const url = "http://localhost/php-api/api/keyboard/delete.php";
+      console.log("euy : ", id)
+      try {
+        const res = await axios.delete(url, {
+          data: {
+            id
+          } 
+        });
+        return res
+        console.log("Store")
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },
 };
 
