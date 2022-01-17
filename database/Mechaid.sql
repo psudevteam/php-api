@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2022 at 03:54 PM
+-- Generation Time: Jan 17, 2022 at 03:15 PM
 -- Server version: 10.6.5-MariaDB-log
 -- PHP Version: 8.1.1
 
@@ -52,11 +52,11 @@ INSERT INTO `Connection` (`id`, `connection`) VALUES
 CREATE TABLE `Keyboard` (
   `id` int(11) NOT NULL,
   `keeb_name` varchar(40) NOT NULL,
-  `keeb_brand` int(11) NOT NULL,
+  `keeb_brand` varchar(40) NOT NULL,
   `keeb_price` float NOT NULL,
-  `keeb_switch` int(11) NOT NULL,
-  `keeb_keycaps` int(11) NOT NULL,
-  `keeb_connection` int(11) NOT NULL
+  `keeb_switch` varchar(40) NOT NULL,
+  `keeb_keycaps` varchar(40) NOT NULL,
+  `keeb_connection` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
@@ -64,9 +64,7 @@ CREATE TABLE `Keyboard` (
 --
 
 INSERT INTO `Keyboard` (`id`, `keeb_name`, `keeb_brand`, `keeb_price`, `keeb_switch`, `keeb_keycaps`, `keeb_connection`) VALUES
-(3, 'Keychron K6', 2, 1700000, 2, 1, 3),
-(4, 'Keychron K4', 2, 1200000, 3, 1, 2),
-(5, 'Keychron K4', 2, 1200000, 2, 1, 2);
+(9, 'Keychron Q1', 'Keychron', 1200000, 'Gateron Blue', 'Akko Blue Warrior', 'Wireless, Wired, 2.4GHz');
 
 -- --------------------------------------------------------
 
@@ -190,8 +188,7 @@ CREATE TABLE `Switch` (
 --
 
 INSERT INTO `Switch` (`id`, `switch_name`, `switch_brand`, `switch_type`, `switch_price`) VALUES
-(2, 'Gateron Brown ', 1, 2, 3000),
-(3, 'Gateron Blue', 1, 3, 3000);
+(2, 'Gateron Brown ', 1, 2, 3000);
 
 -- --------------------------------------------------------
 
@@ -341,7 +338,7 @@ ALTER TABLE `Connection`
 -- AUTO_INCREMENT for table `Keyboard`
 --
 ALTER TABLE `Keyboard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `KeyboardBrand`
