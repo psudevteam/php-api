@@ -251,16 +251,21 @@ export const TableKeyboard = {
       this.keebConnection = "";
     },
 
-    deleteKeeb(keebId) {
+    async deleteKeeb(id) {
       this.isDeleteModalShow = true;
-      this.keebId = keebId;
+      this.keebId = id;
+      console.log(this.keebId)
     },
 
     async onDelete() {
+      console.log("Data Dari aku", this.keebId)
       try {
         await store.dispatch("deleteKeyboard", this.keebId);
+        this.isDeleteModalShow = false
+        this.keebId = ""
+        const res = await store.dispatch("fetchKeyboard");
+        this.getKeyboard = res.data
         Swal.fire("Berhasil!", "Anda Berhasil menghapus data ini!", "success");
-        this.keebId = "";
       } catch (err) {
         console.log(err);
       }
@@ -514,6 +519,9 @@ export const TableKeyboard = {
 							</tr>
 						</tbody>
 					</table>
+          <div class="flex justify-center items-center">
+          <h1 v-if="getKeyboard.length == 0" class="text-4xl" >Data Kosong</h1>
+          </div>
 				</div>
 			</div>
 		</div>
