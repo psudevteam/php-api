@@ -1,5 +1,5 @@
 const { createRouter, createWebHistory } = VueRouter;
-import { Home, TableKeyboard, TableSwitch } from '../component/index.js'
+import { Home, TableKeyboard, TableSwitch } from "../component/index.js";
 
 const routes = [
   { path: "/", component: Home },

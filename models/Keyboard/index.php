@@ -21,7 +21,7 @@
     // Get Keyboard
     public function read() {
       // Create query
-      $query = '
+      $queryB = '
                SELECT Keyboard.id, keeb_name, KeyboardBrand.brand as "keeb_brand", keeb_price, Switch.switch_name as "keeb_switch", Keycaps.keycaps_name as "keeb_keycaps", Connection.connection as "keeb_connection"
                FROM ' . $this->table . '
                LEFT JOIN
@@ -33,7 +33,7 @@
                LEFT JOIN
                 Connection ON Keyboard.keeb_connection = Connection.id 
               ';
-      
+      $query = 'SELECt * FROM Keyboard';
       // Prepare statement
       $stmt = $this->conn->prepare($query);
 
@@ -46,7 +46,8 @@
     // Get Single Keyboard
     public function read_single() {
           // Create query
-          $query = '
+      $query = 'SELECt * FROM Keyboard WHERE Keyboard.id = ? LIMIT 0,1';
+          $queryB = '
                SELECT Keyboard.id, keeb_name, KeyboardBrand.brand as "keeb_brand", keeb_price, Switch.switch_name as "keeb_switch", Keycaps.keycaps_name as "keeb_keycaps", Connection.connection as "keeb_connection"
                FROM ' . $this->table . '
                LEFT JOIN
@@ -73,6 +74,7 @@
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
           // Set properties
+          $this->id = $row['id'];
           $this->keeb_name = $row['keeb_name'];
           $this->keeb_brand = $row['keeb_brand'];
           $this->keeb_price = $row['keeb_price'];
